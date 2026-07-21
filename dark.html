@@ -9,13 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#101312;
-  --ink-2:#161A17;
-  --steel:#20251F;
+  --ink:#1B1E1A;
+  --ink-2:#22261F;
+  --steel:#2A2F27;
   --bone:#EFE8DA;
-  --bone-dim:#B5AC9B;
-  --orange:#F05E23;
-  --orange-hot:#FF6E33;
+  --bone-dim:#BDB4A2;
+  --orange:#F2803D;
+  --orange-hot:#FF9A55;
   --tan:#C9A876;
   --green:#84A468;
   --paper:#E8DFCE;
@@ -32,7 +32,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 
 /* film grain over everything */
-body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;z-index:99;pointer-events:none;opacity:.055;
+body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;z-index:99;pointer-events:none;opacity:.038;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 8s steps(10) infinite}
 @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,2%)}}
@@ -53,12 +53,12 @@ body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;z-index
 /* photo slots: duotone atmosphere + halftone so empties still look art-directed */
 .slot{position:relative;overflow:hidden;background:
   radial-gradient(130% 100% at 15% 0%, rgba(201,168,118,.28), transparent 55%),
-  radial-gradient(120% 90% at 90% 100%, rgba(240,94,35,.30), transparent 55%),
+  radial-gradient(120% 90% at 90% 100%, rgba(242,128,61,.30), transparent 55%),
   linear-gradient(160deg,#2B2F28 0%, #191D18 60%, #12140F 100%)}
 .slot::before{content:'';position:absolute;inset:0;opacity:.25;
   background-image:radial-gradient(rgba(239,232,218,.55) 1px, transparent 1.4px);background-size:9px 9px;
   mask-image:linear-gradient(115deg, transparent 40%, #000 75%)}
-.slot[data-label]::after{content:attr(data-label);position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(239,232,218,.5);border:1px dashed rgba(239,232,218,.35);padding:4px 8px;background:rgba(16,19,18,.6)}
+.slot[data-label]::after{content:attr(data-label);position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(239,232,218,.5);border:1px dashed rgba(239,232,218,.35);padding:4px 8px;background:rgba(27,30,26,.6)}
 .slot .dogline{position:absolute;inset:12%;width:76%;height:76%;opacity:.3}
 .slot.photo::before,.slot.photo::after{display:none}
 .slot.photo img,.slot.photo iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
@@ -70,7 +70,7 @@ body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;z-index
 .polaroid figcaption{font-family:var(--mono);font-size:12px;color:#3B382F;padding:12px 4px 14px;letter-spacing:.06em}
 
 /* ============ NAV ============ */
-header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(rgba(16,19,18,.94),rgba(16,19,18,.7) 75%,transparent)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(rgba(27,30,26,.94),rgba(27,30,26,.7) 75%,transparent)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1320px;margin:0 auto}
 .logo{font-family:var(--disp);font-weight:700;font-size:23px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:10px}
 .logo .tag{width:48px;height:auto;flex:none}
@@ -84,7 +84,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient
 
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:grid;align-items:center;padding:130px 0 120px;background:
-  radial-gradient(60% 45% at 72% 30%, rgba(240,94,35,.14), transparent 60%),
+  radial-gradient(60% 45% at 72% 30%, rgba(242,128,61,.14), transparent 60%),
   var(--ink)}
 .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
 .hero h1{font-size:clamp(72px,11vw,178px);position:relative;z-index:2}
@@ -102,7 +102,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient
 .hero-photos .p1{position:absolute;top:0;right:8%;width:64%;transform:rotate(3.5deg)}
 .hero-photos .p2{position:absolute;bottom:6%;left:0;width:56%;transform:rotate(-5deg);z-index:2}
 .hero-photos .tape{top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg)}
-.stamp-big{position:absolute;z-index:4;right:-6%;bottom:26%;font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);border:3px solid var(--orange);padding:12px 18px;transform:rotate(-8deg);background:rgba(16,19,18,.7);animation:stampIn .5s cubic-bezier(.2,2.4,.4,1) .9s both}
+.stamp-big{position:absolute;z-index:4;right:-6%;bottom:26%;font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);border:3px solid var(--orange);padding:12px 18px;transform:rotate(-8deg);background:rgba(27,30,26,.7);animation:stampIn .5s cubic-bezier(.2,2.4,.4,1) .9s both}
 @keyframes stampIn{0%{transform:rotate(-8deg) scale(2.6);opacity:0}100%{transform:rotate(-8deg) scale(1);opacity:1}}
 .hero-coord{position:absolute;left:28px;bottom:26px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:rgba(239,232,218,.4);text-transform:uppercase}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-photos{height:420px;max-width:520px}}
@@ -161,7 +161,7 @@ section{padding:120px 0;position:relative}
 .fund i{display:block;height:100%;background:var(--orange);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 .fund-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:#5C5545;letter-spacing:.03em}
 .fund-meta b{color:#20251F;font-weight:600}
-.case-cta{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C24A15;text-decoration:none;border-bottom:2px solid #C24A15;padding-bottom:2px}
+.case-cta{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C06A28;text-decoration:none;border-bottom:2px solid #C06A28;padding-bottom:2px}
 .case-cta:hover{color:var(--orange);border-color:var(--orange)}
 .stamp{position:absolute;top:26px;right:-14px;z-index:4;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border:2.5px solid currentColor;transform:rotate(7deg);background:rgba(239,232,218,.85)}
 .stamp.rescued{color:var(--orange)}
@@ -178,7 +178,7 @@ section{padding:120px 0;position:relative}
 .rec{position:absolute;top:12px;left:14px;z-index:3;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--orange);display:flex;gap:8px;align-items:center}
 .rec i{width:9px;height:9px;border-radius:50%;background:var(--orange);animation:blink 1.2s steps(2) infinite}
 @keyframes blink{50%{opacity:.15}}
-.play{position:absolute;inset:0;margin:auto;width:78px;height:78px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 0 0 8px rgba(240,94,35,.25)}
+.play{position:absolute;inset:0;margin:auto;width:78px;height:78px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 0 0 8px rgba(242,128,61,.25)}
 .play::before{content:'';border-style:solid;border-width:14px 0 14px 23px;border-color:transparent transparent transparent #160D08;margin-left:6px}
 .dodo-side{display:grid;gap:30px}
 .dodo-note{margin-top:34px;color:var(--bone-dim);max-width:660px;font-size:18px}
@@ -187,7 +187,7 @@ section{padding:120px 0;position:relative}
 
 /* ============ DONATE (receipt) ============ */
 .donate{background:
-  radial-gradient(70% 60% at 15% 20%, rgba(240,94,35,.13), transparent 60%),
+  radial-gradient(70% 60% at 15% 20%, rgba(242,128,61,.13), transparent 60%),
   var(--steel)}
 .donate-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:start}
 .donate h2{font-size:clamp(52px,6.6vw,96px);margin-bottom:24px}
@@ -203,7 +203,7 @@ section{padding:120px 0;position:relative}
 .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px}
 .amt{font-family:var(--disp);font-weight:700;font-size:24px;padding:14px 6px;background:transparent;color:#2B281F;border:2px solid #2B281F;cursor:pointer;transition:all .1s ease;text-align:center}
 .amt:hover{background:rgba(43,40,31,.08)}
-.amt.active{background:var(--orange);border-color:var(--orange);color:#FFF3E6;box-shadow:3px 3px 0 #2B281F}
+.amt.active{background:var(--orange);border-color:var(--orange);color:#33200F;box-shadow:3px 3px 0 #2B281F}
 .amt:focus-visible{outline:3px solid #8A6F3E;outline-offset:2px}
 .freq{display:flex;gap:9px;margin-bottom:16px}
 .freq button{flex:1;font-family:var(--mono);font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:11px 6px;background:transparent;border:2px dashed #B9AE97;color:#5C5545;cursor:pointer}
@@ -213,7 +213,7 @@ section{padding:120px 0;position:relative}
 .line-items{font-family:var(--mono);font-size:13px;line-height:2.15;color:#5C5545;border-top:2px dashed #B9AE97;border-bottom:2px dashed #B9AE97;padding:14px 0;margin-bottom:18px;list-style:none}
 .line-items li{display:flex;justify-content:space-between;gap:12px}
 .line-items li b{font-weight:600;color:#20251F;flex:none}
-.line-items li.hi b,.line-items li.hi span{color:#C24A15;font-weight:600}
+.line-items li.hi b,.line-items li.hi span{color:#C06A28;font-weight:600}
 .receipt-total{display:flex;justify-content:space-between;font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:#20251F;margin-bottom:20px}
 .receipt .btn{width:100%;justify-content:center;font-size:22px;box-shadow:4px 4px 0 #2B281F}
 .receipt-fine{margin-top:14px;font-family:var(--mono);font-size:10.5px;color:#847C6B;text-align:center;letter-spacing:.06em}
@@ -240,7 +240,7 @@ section{padding:120px 0;position:relative}
 
 /* ============ CLOSING ============ */
 .close-cta{text-align:center;padding:150px 28px 140px;position:relative;overflow:hidden;background:
-  radial-gradient(60% 50% at 50% 100%, rgba(240,94,35,.16), transparent 65%), var(--ink-2)}
+  radial-gradient(60% 50% at 50% 100%, rgba(242,128,61,.16), transparent 65%), var(--ink-2)}
 .close-cta h2{font-size:clamp(60px,9.5vw,150px);max-width:9em;margin:0 auto 36px}
 .close-cta h2 em{font-style:normal;color:var(--orange)}
 .close-cta .eyebrow{display:block;margin-bottom:20px}
@@ -438,8 +438,8 @@ footer{border-top:1.5px solid var(--hairline);padding:46px 0 58px;background:var
 <!-- MARQUEE dark -->
 <div class="marquee dark flat" aria-hidden="true">
   <div class="marquee-track">
-    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg></span>
-    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg></span>
+    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F2803D"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F2803D"><use href="#paw"/></svg></span>
+    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F2803D"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F2803D"><use href="#paw"/></svg></span>
   </div>
 </div>
 
@@ -525,7 +525,7 @@ footer{border-top:1.5px solid var(--hairline);padding:46px 0 58px;background:var
       </figure>
       <svg class="badge" viewBox="0 0 130 130" aria-hidden="true">
         <defs><path id="circ" d="M65,65 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
-        <circle cx="65" cy="65" r="62" fill="#F05E23"/>
+        <circle cx="65" cy="65" r="62" fill="#F2803D"/>
         <circle cx="65" cy="65" r="47" fill="none" stroke="#160D08" stroke-width="1.5" stroke-dasharray="3 4"/>
         <text font-family="IBM Plex Mono,monospace" font-size="12.5" letter-spacing="2.5" fill="#160D08" font-weight="600">
           <textPath href="#circ">CHAMPION K9 TRAINER · 15+ YEARS ·</textPath>
