@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinnante Rescue — Landing Page Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Karla:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Karla',sans-serif;background:#14171A;color:#F2EEE6;min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:48px 20px 64px;line-height:1.6}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9AA39B;margin-bottom:10px}
+h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(40px,9vw,72px);line-height:.95;text-align:center;margin-bottom:14px}
+h1 em{font-style:normal;color:#F05E23}
+.sub{color:#B9C0BA;text-align:center;max-width:520px;margin-bottom:44px;font-size:16.5px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;width:100%;max-width:860px}
+.card{display:block;text-decoration:none;color:inherit;border-radius:18px;overflow:hidden;border:1.5px solid rgba(242,238,230,.14);transition:transform .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-4px);border-color:rgba(242,238,230,.4)}
+.swatch{height:150px;position:relative;display:flex;align-items:center;justify-content:center}
+.card.a .swatch{background:linear-gradient(150deg,#101312,#20251F);}
+.card.a .swatch span{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:34px;color:transparent;-webkit-text-stroke:1.3px #EFE8DA}
+.card.a .swatch b{position:absolute;right:14px;bottom:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#F05E23;border:2px solid #F05E23;padding:5px 9px;transform:rotate(-6deg);font-weight:700}
+.card.b .swatch{background:linear-gradient(150deg,#FAF4E8,#F3EAD7)}
+.card.b .swatch span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;color:#2E5339}
+.card.b .swatch b{position:absolute;right:14px;bottom:12px;font-size:11px;letter-spacing:.08em;color:#3A2410;background:#F4913A;border-radius:999px;padding:6px 12px;transform:rotate(3deg);font-weight:700}
+.body{padding:20px 22px 24px;background:#1B1F22}
+.body h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:26px;letter-spacing:.02em}
+.body p{color:#B9C0BA;font-size:14.5px;margin:6px 0 16px}
+.go{display:inline-block;font-weight:700;font-size:14px;color:#14171A;background:#F2EEE6;border-radius:999px;padding:10px 22px}
+.card.a .go{background:#F05E23;color:#160D08}
+.card.b .go{background:#F4913A;color:#3A2410}
+.fine{margin-top:40px;font-size:12px;color:#77807A;text-align:center;max-width:460px}
+</style>
+</head>
+<body>
+<p class="eyebrow">Cinnante Canine Rescue</p>
+<h1>Two directions.<br><em>One mission.</em></h1>
+<p class="sub">Tap each concept to view it full-screen. Photos, dog names, and numbers are placeholders — every detail gets swapped for the real thing before launch.</p>
+<div class="cards">
+  <a class="card a" href="dark.html">
+    <div class="swatch"><span>Case File</span><b>Option A</b></div>
+    <div class="body">
+      <h2>Option A — Case File</h2>
+      <p>Gritty &amp; cinematic. Evidence-board polaroids, rescue stamps, and a "receipt" that shows donors exactly what their money buys. Closest to the current Cinnante Canine brand.</p>
+      <span class="go">View Option A →</span>
+    </div>
+  </a>
+  <a class="card b" href="light.html">
+    <div class="swatch"><span>Second Chance</span><b>Option B</b></div>
+    <div class="body">
+      <h2>Option B — Second Chance</h2>
+      <p>Warm &amp; hopeful. Sunny palette, real dog profiles with fundraising progress, monthly giving, and featured Dodo videos front and center.</p>
+      <span class="go">View Option B →</span>
+    </div>
+  </a>
+</div>
+<p class="fine">Prepared by 200LAB · Draft for review — donate buttons are not wired up yet.</p>
+</body>
+</html>

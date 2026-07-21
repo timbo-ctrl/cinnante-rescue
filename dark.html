@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinnante Canine Rescue — From Death Row to Best Friend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101312;
+  --ink-2:#161A17;
+  --steel:#20251F;
+  --bone:#EFE8DA;
+  --bone-dim:#B5AC9B;
+  --orange:#F05E23;
+  --orange-hot:#FF6E33;
+  --tan:#C9A876;
+  --green:#84A468;
+  --paper:#E8DFCE;
+  --hairline:rgba(239,232,218,.14);
+  --disp:'Barlow Condensed',sans-serif;
+  --serif:'Source Serif 4',serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:var(--serif);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--orange);color:#160D08}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* film grain over everything */
+body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;z-index:99;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 8s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,2%)}}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;position:relative}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan)}
+.h-disp{font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:.005em}
+.outline{color:transparent;-webkit-text-stroke:1.5px var(--bone)}
+.outline-o{color:transparent;-webkit-text-stroke:1.5px var(--orange)}
+
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:19px;padding:16px 36px;border:none;cursor:pointer;text-decoration:none;position:relative;transition:transform .15s ease}
+.btn:focus-visible{outline:3px solid var(--tan);outline-offset:3px}
+.btn-primary{background:var(--orange);color:#160D08;box-shadow:4px 4px 0 rgba(239,232,218,.9)}
+.btn-primary:hover{background:var(--orange-hot);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(239,232,218,.9)}
+.btn-ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1.5px var(--bone)}
+.btn-ghost:hover{background:rgba(239,232,218,.07)}
+
+/* photo slots: duotone atmosphere + halftone so empties still look art-directed */
+.slot{position:relative;overflow:hidden;background:
+  radial-gradient(130% 100% at 15% 0%, rgba(201,168,118,.28), transparent 55%),
+  radial-gradient(120% 90% at 90% 100%, rgba(240,94,35,.30), transparent 55%),
+  linear-gradient(160deg,#2B2F28 0%, #191D18 60%, #12140F 100%)}
+.slot::before{content:'';position:absolute;inset:0;opacity:.25;
+  background-image:radial-gradient(rgba(239,232,218,.55) 1px, transparent 1.4px);background-size:9px 9px;
+  mask-image:linear-gradient(115deg, transparent 40%, #000 75%)}
+.slot::after{content:attr(data-label);position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(239,232,218,.5);border:1px dashed rgba(239,232,218,.35);padding:4px 8px;background:rgba(16,19,18,.6)}
+.slot .dogline{position:absolute;inset:12%;width:76%;height:76%;opacity:.3}
+
+/* tape + polaroid */
+.tape{position:absolute;width:96px;height:26px;background:rgba(239,232,218,.22);backdrop-filter:blur(1px);border-left:1px solid rgba(239,232,218,.12);border-right:1px solid rgba(239,232,218,.12);z-index:3}
+.polaroid{background:var(--paper);padding:10px 10px 0;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.polaroid .slot{aspect-ratio:1/1}
+.polaroid figcaption{font-family:var(--mono);font-size:12px;color:#3B382F;padding:12px 4px 14px;letter-spacing:.06em}
+
+/* ============ NAV ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(rgba(16,19,18,.94),rgba(16,19,18,.7) 75%,transparent)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1320px;margin:0 auto}
+.logo{font-family:var(--disp);font-weight:700;font-size:23px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo .tag{width:30px;height:30px}
+.logo em{font-style:normal;color:var(--orange)}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--bone-dim)}
+.nav-links a:hover{color:var(--bone)}
+.nav .btn{font-size:15px;padding:10px 22px;box-shadow:3px 3px 0 rgba(239,232,218,.9)}
+@media(max-width:840px){.nav-links li:not(.cta-li){display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;padding:130px 0 120px;background:
+  radial-gradient(60% 45% at 72% 30%, rgba(240,94,35,.14), transparent 60%),
+  var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(72px,11vw,178px);position:relative;z-index:2}
+.hero h1 .l1{display:block}
+.hero h1 .l2{display:block;margin-left:.35em}
+.hero h1 .l3{display:block;color:var(--orange)}
+.hero-sub{max-width:520px;margin:30px 0 36px;font-size:19px;color:var(--bone-dim)}
+.hero-sub strong{color:var(--bone);font-weight:600}
+.hero-ctas{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+
+.hero-photos{position:relative;height:560px}
+.hero-photos .p1{position:absolute;top:0;right:8%;width:64%;transform:rotate(3.5deg)}
+.hero-photos .p2{position:absolute;bottom:6%;left:0;width:56%;transform:rotate(-5deg);z-index:2}
+.hero-photos .tape{top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg)}
+.stamp-big{position:absolute;z-index:4;right:-6%;bottom:26%;font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);border:3px solid var(--orange);padding:12px 18px;transform:rotate(-8deg);background:rgba(16,19,18,.7);animation:stampIn .5s cubic-bezier(.2,2.4,.4,1) .9s both}
+@keyframes stampIn{0%{transform:rotate(-8deg) scale(2.6);opacity:0}100%{transform:rotate(-8deg) scale(1);opacity:1}}
+.hero-coord{position:absolute;left:28px;bottom:26px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:rgba(239,232,218,.4);text-transform:uppercase}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-photos{height:420px;max-width:520px}}
+
+/* ============ MARQUEE ============ */
+.marquee{overflow:hidden;border-top:2px solid var(--bone);border-bottom:2px solid var(--bone);background:var(--orange);color:#160D08;padding:14px 0;transform:rotate(-1.2deg);margin:0 -20px;position:relative;z-index:5}
+.marquee.flat{transform:none;margin:0}
+.marquee-track{display:flex;gap:0;width:max-content;animation:scroll 22s linear infinite}
+.marquee span{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:30px;letter-spacing:.05em;white-space:nowrap;padding:0 18px;display:flex;align-items:center;gap:36px}
+.marquee .paw{width:26px;height:26px;flex:none}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee.dark{background:var(--ink-2);color:var(--bone);border-color:var(--orange)}
+
+/* ============ SECTIONS ============ */
+section{padding:120px 0;position:relative}
+.sec-head{margin-bottom:64px;position:relative}
+.sec-head h2{font-size:clamp(52px,7vw,104px)}
+.sec-head .eyebrow{display:block;margin-bottom:14px}
+.ghost{position:absolute;right:0;top:-40px;font-family:var(--disp);font-weight:700;font-size:clamp(120px,20vw,280px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(239,232,218,.07);pointer-events:none;user-select:none;text-transform:uppercase}
+
+/* method w/ leash line */
+.method{background:var(--ink)}
+.leash{position:absolute;left:0;right:0;top:300px;width:100%;height:220px;pointer-events:none;opacity:.5}
+.leash path{stroke:var(--tan);stroke-width:2;fill:none;stroke-dasharray:8 10}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;position:relative}
+.method-card{position:relative}
+.method-card:nth-child(2){margin-top:70px}
+.method-card:nth-child(3){margin-top:20px}
+.method-card .num{position:absolute;top:-38px;left:-14px;z-index:3;font-family:var(--disp);font-weight:700;font-size:110px;line-height:1;color:var(--orange);text-shadow:4px 4px 0 var(--ink), 6px 6px 0 rgba(239,232,218,.85)}
+.method-card .slot{aspect-ratio:4/5;transform:rotate(-1.5deg);box-shadow:0 16px 36px rgba(0,0,0,.45)}
+.method-card:nth-child(2) .slot{transform:rotate(1.8deg)}
+.method-card:nth-child(3) .slot{transform:rotate(-1deg)}
+.method-card h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:38px;margin:26px 0 10px;line-height:1}
+.method-card h3 span{color:var(--orange)}
+.method-card p{color:var(--bone-dim);font-size:16px}
+@media(max-width:880px){.method-grid{grid-template-columns:1fr}.method-card:nth-child(n){margin-top:0}.leash{display:none}}
+
+/* ============ CASE FILES ============ */
+.cases{background:
+  radial-gradient(80% 60% at 90% 10%, rgba(201,168,118,.08), transparent 60%),
+  var(--ink-2)}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;align-items:start}
+.case{position:relative;background:var(--paper);color:#2B281F;padding:14px 14px 0;transform:rotate(-1.6deg);box-shadow:0 22px 44px rgba(0,0,0,.5);transition:transform .2s ease}
+.case:nth-child(2){transform:rotate(1.4deg);margin-top:44px}
+.case:nth-child(3){transform:rotate(-.8deg);margin-top:14px}
+.case:hover{transform:rotate(0) translateY(-6px)}
+.case .tape{top:-13px;left:50%;transform:translateX(-50%) rotate(2deg)}
+.case .slot{aspect-ratio:1/1}
+.case-body{padding:16px 6px 20px}
+.case-meta{font-family:var(--mono);font-size:11px;color:#847C6B;display:flex;justify-content:space-between;margin-bottom:8px;letter-spacing:.05em}
+.case h3{font-family:var(--disp);text-transform:uppercase;font-weight:700;font-size:34px;line-height:1;margin-bottom:6px;color:#20251F}
+.case p{font-size:14.5px;color:#5C5545;line-height:1.5}
+.case-log{margin-top:12px;border-top:1.5px dashed #B9AE97;padding-top:10px;font-family:var(--mono);font-size:12px;line-height:1.95;color:#5C5545;list-style:none}
+.case-log b{color:#20251F;font-weight:600}
+.stamp{position:absolute;top:26px;right:-14px;z-index:4;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border:2.5px solid currentColor;transform:rotate(7deg);background:rgba(239,232,218,.85)}
+.stamp.rescued{color:var(--orange)}
+.stamp.training{color:#8A6F3E}
+.stamp.placed{color:#5C7A45}
+@media(max-width:880px){.case-grid{grid-template-columns:1fr;gap:56px}.case:nth-child(n){margin-top:0}}
+
+/* ============ DODO ============ */
+.dodo-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:30px}
+.screen{position:relative;border:3px solid var(--bone);box-shadow:10px 10px 0 var(--orange);background:var(--ink)}
+.screen .slot{aspect-ratio:16/10}
+.screen.small .slot{aspect-ratio:16/9}
+.screen .scan{position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 2px, transparent 2px 5px)}
+.rec{position:absolute;top:12px;left:14px;z-index:3;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--orange);display:flex;gap:8px;align-items:center}
+.rec i{width:9px;height:9px;border-radius:50%;background:var(--orange);animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.play{position:absolute;inset:0;margin:auto;width:78px;height:78px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 0 0 8px rgba(240,94,35,.25)}
+.play::before{content:'';border-style:solid;border-width:14px 0 14px 23px;border-color:transparent transparent transparent #160D08;margin-left:6px}
+.dodo-side{display:grid;gap:30px}
+.dodo-note{margin-top:34px;color:var(--bone-dim);max-width:660px;font-size:18px}
+.dodo-note b{color:var(--bone)}
+@media(max-width:880px){.dodo-grid{grid-template-columns:1fr}}
+
+/* ============ DONATE (receipt) ============ */
+.donate{background:
+  radial-gradient(70% 60% at 15% 20%, rgba(240,94,35,.13), transparent 60%),
+  var(--steel)}
+.donate-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:start}
+.donate h2{font-size:clamp(52px,6.6vw,96px);margin-bottom:24px}
+.donate h2 em{font-style:normal;color:var(--orange)}
+.donate-copy p{color:var(--bone-dim);margin-bottom:18px;max-width:500px;font-size:18px}
+.donate-copy p b{color:var(--bone)}
+.receipt{background:var(--paper);color:#2B281F;padding:38px 34px 30px;transform:rotate(1deg);box-shadow:0 26px 50px rgba(0,0,0,.55);position:relative;
+  -webkit-mask:radial-gradient(circle at 10px 0, transparent 7px, #000 7.5px) -10px 0/20px 100%;
+  mask:radial-gradient(circle at 10px 0, transparent 7px, #000 7.5px) -10px 0/20px 100%}
+.receipt-head{text-align:center;border-bottom:2px dashed #B9AE97;padding-bottom:16px;margin-bottom:20px}
+.receipt-head .rt{font-family:var(--disp);font-weight:700;font-size:30px;text-transform:uppercase;letter-spacing:.04em;color:#20251F}
+.receipt-head .rs{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:#847C6B;text-transform:uppercase;margin-top:4px}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px}
+.amt{font-family:var(--disp);font-weight:700;font-size:24px;padding:14px 6px;background:transparent;color:#2B281F;border:2px solid #2B281F;cursor:pointer;transition:all .1s ease;text-align:center}
+.amt:hover{background:rgba(43,40,31,.08)}
+.amt.active{background:var(--orange);border-color:var(--orange);color:#FFF3E6;box-shadow:3px 3px 0 #2B281F}
+.amt:focus-visible{outline:3px solid #8A6F3E;outline-offset:2px}
+.line-items{font-family:var(--mono);font-size:13px;line-height:2.15;color:#5C5545;border-top:2px dashed #B9AE97;border-bottom:2px dashed #B9AE97;padding:14px 0;margin-bottom:18px;list-style:none}
+.line-items li{display:flex;justify-content:space-between;gap:12px}
+.line-items li b{font-weight:600;color:#20251F;flex:none}
+.line-items li.hi b,.line-items li.hi span{color:#C24A15;font-weight:600}
+.receipt-total{display:flex;justify-content:space-between;font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:#20251F;margin-bottom:20px}
+.receipt .btn{width:100%;justify-content:center;font-size:22px;box-shadow:4px 4px 0 #2B281F}
+.receipt-fine{margin-top:14px;font-family:var(--mono);font-size:10.5px;color:#847C6B;text-align:center;letter-spacing:.06em}
+.receipt .stamp{top:auto;bottom:106px;right:-18px;background:transparent;color:#5C7A45;transform:rotate(-9deg)}
+@media(max-width:920px){.donate-grid{grid-template-columns:1fr;gap:54px}}
+
+/* ============ JOSEPH ============ */
+.joe{background:var(--ink)}
+.joe-grid{display:grid;grid-template-columns:.95fr 1.15fr;gap:80px;align-items:center}
+.joe-photo{position:relative}
+.joe-photo .polaroid{transform:rotate(-2.4deg)}
+.joe-photo .polaroid .slot{aspect-ratio:3/4}
+.joe-photo .tape{top:-13px;right:24px;transform:rotate(6deg)}
+.joe-photo .badge{position:absolute;bottom:-24px;right:-18px;z-index:3;width:130px;height:130px;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.joe h2{font-size:clamp(46px,5.6vw,80px);margin-bottom:22px}
+.joe h2 em{font-style:normal;color:var(--orange)}
+.joe p{color:var(--bone-dim);margin-bottom:16px;font-size:18px}
+.joe p strong{color:var(--bone)}
+.record{margin-top:30px;border-top:1.5px solid var(--hairline);list-style:none}
+.record li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:14px 0;border-bottom:1.5px solid var(--hairline);font-size:15.5px;align-items:baseline}
+.record li span{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--orange);letter-spacing:.1em}
+@media(max-width:900px){.joe-grid{grid-template-columns:1fr;gap:56px}.joe-photo{max-width:420px}}
+
+/* ============ CLOSING ============ */
+.close-cta{text-align:center;padding:150px 28px 140px;position:relative;overflow:hidden;background:
+  radial-gradient(60% 50% at 50% 100%, rgba(240,94,35,.16), transparent 65%), var(--ink-2)}
+.close-cta h2{font-size:clamp(60px,9.5vw,150px);max-width:9em;margin:0 auto 36px}
+.close-cta h2 em{font-style:normal;color:var(--orange)}
+.close-cta .eyebrow{display:block;margin-bottom:20px}
+
+footer{border-top:1.5px solid var(--hairline);padding:46px 0 58px;background:var(--ink)}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.foot-links{display:flex;gap:26px;list-style:none;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.foot-links a{text-decoration:none;color:var(--bone-dim)}
+.foot-links a:hover{color:var(--bone)}
+.foot-fine{width:100%;margin-top:26px;font-family:var(--mono);font-size:11px;color:rgba(239,232,218,.35);letter-spacing:.05em}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body::before,.marquee-track,.rec i,.joe-photo .badge{animation:none}
+  .stamp-big{animation:none;opacity:1}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="paw"><circle cx="12" cy="15" r="6"/><circle cx="5" cy="8" r="3"/><circle cx="12" cy="5" r="3"/><circle cx="19" cy="8" r="3"/></g>
+    <g id="dogline" fill="none" stroke="#EFE8DA" stroke-width="1.2">
+      <path d="M20 70 Q22 50 34 46 Q36 34 46 34 Q54 34 56 42 L74 40 Q80 40 80 48 L78 70 M30 70 L30 60 M64 70 L64 58"/>
+      <circle cx="49" cy="39" r="1.6" fill="#EFE8DA"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">
+      <svg class="tag" viewBox="0 0 24 24" fill="#F05E23" aria-hidden="true"><use href="#paw"/></svg>
+      Cinnante<em>&nbsp;Rescue</em>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#dogs">Case Files</a></li>
+      <li><a href="#joseph">The Trainer</a></li>
+      <li class="cta-li"><a class="btn btn-primary" href="#donate">Donate</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow reveal">Founded by a championship K9 trainer</p>
+      <h1 class="h-disp reveal">
+        <span class="l1">From</span>
+        <span class="l2 outline">death row</span>
+        <span class="l3">to best friend.</span>
+      </h1>
+      <p class="hero-sub reveal">Joseph Cinnante spent 15+ years training police, military, and championship protection dogs. <strong>Now he pulls dogs off euthanasia lists</strong>, retrains them, and sends them home.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="#donate">Fund a rescue</a>
+        <a class="btn btn-ghost" href="#method">How it works</a>
+      </div>
+    </div>
+    <div class="hero-photos reveal" aria-hidden="true">
+      <figure class="polaroid p1">
+        <span class="tape"></span>
+        <div class="slot" data-label="Drop: shelter intake photo">
+          <svg class="dogline" viewBox="0 0 100 100"><use href="#dogline"/></svg>
+        </div>
+        <figcaption>intake · day 0</figcaption>
+      </figure>
+      <figure class="polaroid p2">
+        <span class="tape"></span>
+        <div class="slot" data-label="Drop: same dog, adoption day">
+          <svg class="dogline" viewBox="0 0 100 100"><use href="#dogline"/></svg>
+        </div>
+        <figcaption>same dog · day 42</figcaption>
+      </figure>
+      <span class="stamp-big">Case reopened</span>
+    </div>
+  </div>
+  <span class="hero-coord">Rescue log · [City, ST] · Active</span>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Rescue <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Retrain <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Rehome <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Repeat <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg></span>
+    <span>Rescue <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Retrain <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Rehome <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Repeat <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg></span>
+  </div>
+</div>
+
+<!-- METHOD -->
+<section class="method" id="method">
+  <span class="ghost">Method</span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The same system that builds champions</span>
+      <h2 class="h-disp">Most "unadoptable" dogs<br><span class="outline-o">just never met a real trainer.</span></h2>
+    </div>
+    <svg class="leash" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true"><path d="M40 180 C 300 40, 500 220, 720 90 S 1100 60, 1180 140"/></svg>
+    <div class="method-grid">
+      <article class="method-card reveal">
+        <span class="num">01</span>
+        <div class="slot" data-label="Drop: photo — shelter pull"></div>
+        <h3>Off <span>the list</span></h3>
+        <p>Dogs scheduled for euthanasia — usually for behavior nobody had the skill to fix — get pulled from the shelter and into the program.</p>
+      </article>
+      <article class="method-card reveal">
+        <span class="num">02</span>
+        <div class="slot" data-label="Drop: photo — training session"></div>
+        <h3>Board <span>&amp; rebuild</span></h3>
+        <p>Full-immersion board &amp; train — the same curriculum behind Joseph's working K9s — until the behavior that doomed them is gone.</p>
+      </article>
+      <article class="method-card reveal">
+        <span class="num">03</span>
+        <div class="slot" data-label="Drop: photo — adoption day"></div>
+        <h3>Sent <span>home</span></h3>
+        <p>Matched with the right family — and every adopter gets handler-level instruction so the transformation sticks for life.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CASE FILES -->
+<section class="cases" id="dogs">
+  <span class="ghost">Files</span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Every dog gets a record</span>
+      <h2 class="h-disp">Every record<br>gets <span class="outline">rewritten.</span></h2>
+    </div>
+    <div class="case-grid">
+      <article class="case reveal">
+        <span class="tape"></span>
+        <span class="stamp placed">Placed</span>
+        <div class="slot" data-label="Drop: dog photo"></div>
+        <div class="case-body">
+          <div class="case-meta"><span>FILE № 001</span><span>INTAKE 00/00/00</span></div>
+          <h3>[Dog name]</h3>
+          <p>[One-line story: what got them listed, what changed.]</p>
+          <ul class="case-log">
+            <li><b>Listed for:</b> [reactivity]</li>
+            <li><b>Days in training:</b> [00]</li>
+            <li><b>Status:</b> Home with [family]</li>
+          </ul>
+        </div>
+      </article>
+      <article class="case reveal">
+        <span class="tape"></span>
+        <span class="stamp training">In training</span>
+        <div class="slot" data-label="Drop: dog photo"></div>
+        <div class="case-body">
+          <div class="case-meta"><span>FILE № 002</span><span>INTAKE 00/00/00</span></div>
+          <h3>[Dog name]</h3>
+          <p>[One-line story.]</p>
+          <ul class="case-log">
+            <li><b>Listed for:</b> [reason]</li>
+            <li><b>Days in training:</b> [00]</li>
+            <li><b>Status:</b> Accepting applications</li>
+          </ul>
+        </div>
+      </article>
+      <article class="case reveal">
+        <span class="tape"></span>
+        <span class="stamp rescued">Just rescued</span>
+        <div class="slot" data-label="Drop: dog photo"></div>
+        <div class="case-body">
+          <div class="case-meta"><span>FILE № 003</span><span>INTAKE 00/00/00</span></div>
+          <h3>[Dog name]</h3>
+          <p>[One-line story.]</p>
+          <ul class="case-log">
+            <li><b>Listed for:</b> [reason]</li>
+            <li><b>Days in training:</b> [00]</li>
+            <li><b>Status:</b> Evaluation week</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE dark -->
+<div class="marquee dark flat" aria-hidden="true">
+  <div class="marquee-track">
+    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg></span>
+    <span>As seen on The Dodo <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg> Watched by millions <svg class="paw" viewBox="0 0 24 24" fill="#F05E23"><use href="#paw"/></svg></span>
+  </div>
+</div>
+
+<!-- DODO -->
+<section class="dodo">
+  <div class="wrap">
+    <div class="dodo-grid">
+      <div class="screen reveal">
+        <span class="rec"><i></i>REC</span>
+        <div class="slot" data-label="Embed: featured Dodo video"></div>
+        <span class="scan"></span>
+        <span class="play" aria-hidden="true"></span>
+      </div>
+      <div class="dodo-side">
+        <div class="screen small reveal">
+          <div class="slot" data-label="Embed: Dodo video 2"></div>
+          <span class="scan"></span>
+        </div>
+        <div class="screen small reveal">
+          <div class="slot" data-label="Embed: Dodo video 3"></div>
+          <span class="scan"></span>
+        </div>
+      </div>
+    </div>
+    <p class="dodo-note reveal"><b>Multiple Cinnante rescue dogs have been featured by @TheDodo</b> — watched, shared, and loved by millions. The stories are real. There are more dogs waiting for theirs.</p>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="donate" id="donate">
+  <span class="ghost">Fund</span>
+  <div class="wrap donate-grid">
+    <div class="donate-copy reveal">
+      <p class="eyebrow" style="margin-bottom:16px">Fund the next rescue</p>
+      <h2 class="h-disp">Your dollars buy <em>days of training.</em></h2>
+      <p>Rescue is the cheap part. What actually saves these dogs is weeks of professional board &amp; train — food, housing, vet care, and daily work with a world-class trainer.</p>
+      <p><b>Every donation is logged against a dog.</b> You'll see exactly who your money helped and where they ended up.</p>
+    </div>
+    <div class="receipt reveal">
+      <span class="stamp placed">Paid → Saved</span>
+      <div class="receipt-head">
+        <div class="rt">Rescue Receipt</div>
+        <div class="rs">Cinnante Canine Rescue · No. 000241</div>
+      </div>
+      <div class="amounts" role="group" aria-label="Donation amount">
+        <button class="amt" type="button">$25</button>
+        <button class="amt active" type="button">$50</button>
+        <button class="amt" type="button">$100</button>
+        <button class="amt" type="button">$250</button>
+        <button class="amt" type="button">$500</button>
+        <button class="amt" type="button">Custom</button>
+      </div>
+      <ul class="line-items">
+        <li><b>$25</b><span>Vet intake + vaccinations</span></li>
+        <li class="hi"><b>$50</b><span>One week of board &amp; train</span></li>
+        <li><b>$100</b><span>Full evaluation + starter gear</span></li>
+        <li><b>$250</b><span>One month — housed, fed, trained</span></li>
+        <li><b>$500</b><span>Full rescue-to-rehome, one dog</span></li>
+      </ul>
+      <div class="receipt-total"><span>Total</span><span id="total">$50.00</span></div>
+      <a class="btn btn-primary" href="#" id="donate-btn">Donate $50</a>
+      <p class="receipt-fine">[Payment processor + tax-deductibility line — pending entity confirmation]</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOSEPH -->
+<section class="joe" id="joseph">
+  <span class="ghost">Trainer</span>
+  <div class="wrap joe-grid">
+    <div class="joe-photo reveal">
+      <figure class="polaroid">
+        <span class="tape"></span>
+        <div class="slot" data-label="Drop: portrait — Joseph + rescue dog"></div>
+        <figcaption>J. Cinnante · handler / founder</figcaption>
+      </figure>
+      <svg class="badge" viewBox="0 0 130 130" aria-hidden="true">
+        <defs><path id="circ" d="M65,65 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+        <circle cx="65" cy="65" r="62" fill="#F05E23"/>
+        <circle cx="65" cy="65" r="47" fill="none" stroke="#160D08" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text font-family="IBM Plex Mono,monospace" font-size="12.5" letter-spacing="2.5" fill="#160D08" font-weight="600">
+          <textPath href="#circ">CHAMPION K9 TRAINER · 15+ YEARS ·</textPath>
+        </text>
+        <g fill="#160D08" transform="translate(53,50) scale(1.1)"><use href="#paw"/></g>
+      </svg>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow" style="margin-bottom:16px">The trainer</p>
+      <h2 class="h-disp">The dogs no one wanted got <em>the trainer everyone wants.</em></h2>
+      <p><strong>Joseph Cinnante</strong> built his career at the top of the working-dog world — and he's now aiming that entire skillset at the dogs with the least chance.</p>
+      <ul class="record">
+        <li><span>AGE 22</span>Training director, one of the world's largest personal &amp; executive protection dog companies</li>
+        <li><span>AGE 24</span>Owned and operated a police dog company in the Czech Republic</li>
+        <li><span>15+ YEARS</span>Trained and delivered K9s for military and police units internationally</li>
+        <li><span>CHAMPION</span>Regional Championship, French Ring — France</li>
+        <li><span>WORLDWIDE</span>Seminars across the US, Central &amp; South America, Asia, and Europe</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE closing -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg></span>
+    <span>Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg> Donate <svg class="paw" viewBox="0 0 24 24" fill="#160D08"><use href="#paw"/></svg></span>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<section class="close-cta">
+  <span class="eyebrow reveal">One more dog is waiting</span>
+  <h2 class="h-disp reveal">Rewrite a<br><em>death sentence.</em></h2>
+  <a class="btn btn-primary reveal" href="#donate" style="font-size:23px;padding:20px 54px">Donate now</a>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="logo" href="#top">
+      <svg class="tag" viewBox="0 0 24 24" fill="#F05E23" aria-hidden="true"><use href="#paw"/></svg>
+      Cinnante<em>&nbsp;Rescue</em>
+    </a>
+    <ul class="foot-links">
+      <li><a href="https://cinnantecanine.com">Training site</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="foot-fine">© Cinnante Canine Rescue. [Entity + tax status line pending.] Site by 200LAB.</p>
+  </div>
+</footer>
+
+<script>
+const amts=document.querySelectorAll('.amt');
+const donateBtn=document.getElementById('donate-btn');
+const total=document.getElementById('total');
+amts.forEach(b=>b.addEventListener('click',()=>{
+  amts.forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const v=b.textContent;
+  donateBtn.textContent = v==='Custom' ? 'Donate' : 'Donate '+v;
+  total.textContent = v==='Custom' ? '$ —' : v+'.00';
+}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
